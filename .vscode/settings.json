@@ -1,5 +1,0 @@
-{
-    "rust-analyzer.linkedProjects": [
-        "./fisq-derive/Cargo.toml"
-    ]
-}
