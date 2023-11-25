@@ -38,11 +38,11 @@ macro_rules! timeprintln {
         timeprintln!(as "[%H:%M:%S]")
     };
     (as $f:expr) => {
-        println!("{}", utils::chrono::Local::now().format($f))
+        println!("{}", chrono::Local::now().format($f))
     };
     (as $f:expr; $($arg:tt)*) => { // this has to be before
         {
-            print!("{} ", utils::chrono::Local::now().format($f));
+            print!("{} ", chrono::Local::now().format($f));
             println!($( $arg )*)
         }
     };
