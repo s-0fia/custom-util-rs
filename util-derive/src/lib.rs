@@ -26,10 +26,10 @@ fn derive_macro(ast: syn::DeriveInput, operation_name: Tokens, operation: Tokens
                     )
                 )
             },
-            syn::Fields::Unit => panic!("Unit Structs cannot derive the {} Macro.", operation_name.to_string()),
+            syn::Fields::Unit => panic!("Unit Structs cannot derive the {} Macro.", operation_name),
         }
     } else {
-        panic!("Only Structs can derive the {} Macro.", operation_name.to_string())
+        panic!("Only Structs can derive the {} Macro.", operation_name)
     };
 
     let fn_name = syn::Ident::new(operation_name.to_string().to_lowercase().as_str(), proc_macro2::Span::call_site());
@@ -61,6 +61,21 @@ fn derive_macro(ast: syn::DeriveInput, operation_name: Tokens, operation: Tokens
 ///     x: f64,
 ///     y: f64,
 /// }
+/// 
+/// let a = Foo {
+///     x: 10.0,
+///     y: 20.0,
+/// };
+/// 
+/// let b = Foo {
+///     x: 30.0,
+///     y: 40.0,
+/// };
+/// 
+/// let sum = a + b;
+/// 
+/// assert_eq!(sum.x, 40.0);
+/// assert_eq!(sum.y, 60.0);
 /// ```
 /// Will expand to:
 /// ```
@@ -105,6 +120,21 @@ pub fn add_macro(input: TokenStream) -> TokenStream {
 ///     x: f64,
 ///     y: f64,
 /// }
+/// 
+/// let a = Foo {
+///     x: 40.0,
+///     y: 30.0,
+/// };
+/// 
+/// let b = Foo {
+///     x: 20.0,
+///     y: 10.0,
+/// };
+/// 
+/// let diff = a - b;
+/// 
+/// assert_eq!(diff.x, 20.0);
+/// assert_eq!(diff.y, 20.0);
 /// ```
 /// Will expand to:
 /// ```
@@ -149,6 +179,21 @@ pub fn sub_macro(input: TokenStream) -> TokenStream {
 ///     x: f64,
 ///     y: f64,
 /// }
+/// 
+/// let a = Foo {
+///     x: 10.0,
+///     y: 20.0,
+/// };
+/// 
+/// let b = Foo {
+///     x: 30.0,
+///     y: 40.0,
+/// };
+/// 
+/// let prod = a * b;
+/// 
+/// assert_eq!(prod.x, 300.0);
+/// assert_eq!(prod.y, 800.0);
 /// ```
 /// Will expand to:
 /// ```
@@ -193,6 +238,21 @@ pub fn mul_macro(input: TokenStream) -> TokenStream {
 ///     x: f64,
 ///     y: f64,
 /// }
+/// 
+/// let a = Foo {
+///     x: 40.0,
+///     y: 30.0,
+/// };
+/// 
+/// let b = Foo {
+///     x: 20.0,
+///     y: 10.0,
+/// };
+/// 
+/// let quo = a / b;
+/// 
+/// assert_eq!(quo.x, 2.0);
+/// assert_eq!(quo.y, 3.0);
 /// ```
 /// Will expand to:
 /// ```
