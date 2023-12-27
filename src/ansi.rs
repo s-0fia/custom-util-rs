@@ -1,5 +1,5 @@
 pub const REPLACE_MAP: [(&str, &str); 20] = [
-    ("_X", self::X), ("_BLD", style::BLD), ("_ITL", style::ITL), ("_UND", style::UND),
+    ("_X", X), ("_BLD", BLD), ("_ITL", ITL), ("_UND", UND),
     (".BLK", BLK), (".RED", RED), (".GRN", GRN), (".YLW", YLW), (".BLU", BLU), (".MGT", MGT), (".CYN", CYN), (".WHT", WHT),
     ("#BLK", BBLK), ("#RED", BRED), ("#GRN", BGRN), ("#YLW", BYLW), ("#BLU", BBLU), ("#MGT", BMGT), ("#CYN", BCYN), ("#WHT", BWHT)
 ];
@@ -59,11 +59,11 @@ pub mod b_color { // Denoted by a #
     }
 }
 
-pub mod style { // Denoted by a _
-    pub const BLD: &str = "\x1b[1m";  // Bold
-    pub const ITL: &str = "\x1b[3m";  // Italicized
-    pub const UND: &str = "\x1b[4m";  // Underline
-}
+pub const BLD: &str = "\x1b[1m";  // Bold
+pub const ITL: &str = "\x1b[3m";  // Italicized
+pub const UND: &str = "\x1b[4m";  // Underline
+// pub mod style { // Denoted by a _
+// }
 
 /// Function which replaces the custom ansi mapping strings
 /// with their respective ansi colour codes. This function
